@@ -11,7 +11,7 @@ import java.util.List;
 public class RedmineController {
     private static final String URI = "";
     private static final String API_ACCESS_KEY = "";
-    private static String PROJECT_KEY = "";
+    private static final String PROJECT_KEY = "";
     private static Integer QUERY_ID = null;
 
     public static void main(String[] args) throws Exception {
@@ -20,14 +20,9 @@ public class RedmineController {
 
         // かんばんタスクチケットリスト
         List<Issue> issues = issueManager.getIssues(PROJECT_KEY, QUERY_ID);
-
-        Issue rootIssue;
-        Integer rootId;
-
         int size = issues.size();
-
         for (Issue issue : issues) {
-             rootId = Integer.valueOf(issue.getSubject().substring(1, 5));
+            Integer rootId = Integer.valueOf(issue.getSubject().substring(1, 5));
 
             if (isInvalidFormat(rootId)) {
                 System.out.println("NG format ticket. [" + issue.getId() + " : " + issue.getSubject() + "]");
@@ -35,6 +30,7 @@ public class RedmineController {
                 continue;
             }
 
+            Issue rootIssue;
             try {
                 // かんばんタスクチケットに紐づく元のチケットを取得
                 rootIssue = issueManager.getIssueById(rootId);

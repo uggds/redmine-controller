@@ -1,0 +1,11 @@
+<issues>
+    <status>
+        <issue id="1001" name="STAND_BY"/>
+        <issue id="1000" name="DOING"/>
+        <issue id="9990" name="COMPLETE"/>
+    </status>
+    <story>
+        <issue id="7094" name="ANALYSIS"/>
+        <issue id="7096" name="PG_UT"/>
+    </story>
+</issues>
